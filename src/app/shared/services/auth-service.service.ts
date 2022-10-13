@@ -17,10 +17,12 @@ export class AuthServiceService {
   }
 
   // base url imported from environment folder
-  // private BASE_URL = environment.BASE_URL;
-  private BASE_URL= "https://lightup-autocare.herokuapp.com";
+    // alternative endpoint
+    private BASE_URL = "https://light-auto-care-server.herokuapp.com"
+  // private BASE_URL= "http://localhost:3000";
   private LOGIN_URL = this.BASE_URL+ this.endpoint.staff+"/login";
   private SIGN_UP = this.BASE_URL + this.endpoint.staff+"/signup";
+
 
   constructor(private http: HttpClient) { }
 

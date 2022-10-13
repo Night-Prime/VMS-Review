@@ -1,6 +1,6 @@
 .container {
   width: 100vw;
-  height: 100vh;
+  min-height:max-content;
 }
 
 main {
@@ -11,7 +11,6 @@ main {
   color:white;
   background-color: black;
 }
-
 .log-head {
   background-color: black;
   width: 100vw;
@@ -87,7 +86,7 @@ form input::placeholder {
   padding-left: .5rem;
 }
 
-form button {
+button,form button {
   margin-top: 1rem;
   margin-left: 5rem;
   width: 20%;
@@ -96,6 +95,7 @@ form button {
   color: blue;
   background-color: orange;
   font-weight: 700;
+  cursor:pointer;
 }
 
 form button:disabled {
@@ -105,4 +105,33 @@ form button:disabled {
 form button:hover {
   color: blue;
   background-color: white;
+}
+
+.alt-btns {
+  width:50%;
+  float: right;
+  display: flex;
+  flex-direction: crow;
+}
+
+/* .alt-btns button{
+  border-radius: 50%;
+} */
+
+.guest-btn{
+  background-color: white !important;
+}
+
+.google-btn{
+  background-color: red !important;
+}
+
+.facebook-btn{
+  background-color: blue !important;
+  color: white;
+}
+
+.alt-btns button:hover{
+  background-color: white !important;
+  color: orange;
 }

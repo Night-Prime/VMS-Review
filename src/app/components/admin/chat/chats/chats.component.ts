@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MatDialogRef } from '@angular/material/dialog';
 import { AuthServiceService } from 'src/app/shared/services/auth-service.service';
 import * as io from 'socket.io-client';
-import { Subscription } from 'rxjs';
+
 import { ActivatedRoute, ActivatedRouteSnapshot } from '@angular/router';
 
 @Component({
@@ -39,20 +39,25 @@ export class ChatsComponent implements OnInit {
   socket: any;
 
   userNameUpdate(name: string):void {
-    this.socket = io.io(`localhost:8080?userName=${name}`, )
+    this.socket = io.io(`https://light-auto-care-server.herokuapp.com?userName=${name}`)
     this.userName = name;
 
     this.socket.emit('set-user-name', name);
 
+    this.socket.on("connect",(data: any)=>{
+      console.log(`connection successfully`)
+    });
     this.socket.on('user-list', (userList: string[]) => {
       this.userList = userList;
+      console.log(this.socket.id);
     });
 
     this.socket.on('message-broadcast', (data: {message: string, userName: string}) => {
       if(data){
         this.messageList.push({message: data.message, userName: data.userName, mine: false});
       }
-    })
+    });
+
   }
 
   sendMessage():void{
